@@ -1,0 +1,28 @@
+{
+  "name": "ca-2-server-side-programming-gabrielcct2024342",
+  "version": "1.0.0",
+  "description": "[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/gCxlkD7T)",
+  "homepage": "https://github.com/CCT-Dublin/ca-2-server-side-programming-GabrielCCT2024342#readme",
+  "bugs": {
+    "url": "https://github.com/CCT-Dublin/ca-2-server-side-programming-GabrielCCT2024342/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CCT-Dublin/ca-2-server-side-programming-GabrielCCT2024342.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon server.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.11"
+  }
+}
