@@ -4,6 +4,7 @@ const port = 3000
 const express = require("express")
 const fs = require("fs")
 const csv = require("csv-parser")
+const db = require("./database")
 
 const filePath = "person_info.csv"
 const firstNames = []
@@ -22,6 +23,9 @@ const stream = fs.createReadStream(filePath)
     })
     .on("end", () => {
         console.log("Reading done")
+    })
+    .on("error", (err, row) => {
+        console.error("Error: ", err.message, " on row ", row)
     })
 
 app.set("view engine", "ejs")
