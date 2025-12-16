@@ -4,7 +4,12 @@ const port = 3000
 const express = require("express")
 const fs = require("fs")
 const csv = require("csv-parser")
+const path = require("path")
 const db = require("./database")
+const validate = require("./validation")
+const regExs = validate.regExs
+const validation = validate.validation
+const fullValidation = validate.fullValidation
 
 const filePath = "person_info.csv"
 const firstNames = []
@@ -30,10 +35,39 @@ const stream = fs.createReadStream(filePath)
 
 app.set("view engine", "ejs")
 app.use(express.urlencoded({extended: false}))
+app.use(express.static(__dirname + "/views"))
 
 
 app.get("/", (req, res) => {
     res.render("index.ejs")
+})
+
+app.get("/form", (req, res) => {
+    res.render("form.ejs")
+})
+
+app.post("/form", (req, res) => {
+    const {fname, lname, email, pnumber, eircode} = req.body
+
+    if(fullValidation(fname,lname, email, pnumber, eircode)){
+        try {
+            db.query(
+                "INSERT INTO user_data VALUES (?, ?, ?, ?, ?)",
+                [fname, lname, email, pnumber, eircode]
+            )   
+
+            console.log("All good")
+
+        }catch (err) {
+            res.status(500).send("Database error")
+        }
+        
+        res.render(path.join(__dirname, "views", "success.ejs"))
+    } else{
+        res.render(path.join(__dirname, "views", "form.ejs"))
+    }
+
+    
 })
 
 app.listen(port, () => {

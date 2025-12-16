@@ -1,0 +1,29 @@
+body{
+  display: block;
+  margin: 5%;
+}
+
+h1{
+  margin: 10px auto 20px;
+  width: 500px;
+  text-align: center;
+}
+
+form {
+   margin: 10px auto;
+   width: 280px;
+}
+form label{
+  display: inline-block;
+  text-align: right;
+  margin: 5px 0px
+}
+form input{
+  text-align: left;
+  float: right;
+}
+
+a{
+  display: block;
+  text-align: center;
+}
