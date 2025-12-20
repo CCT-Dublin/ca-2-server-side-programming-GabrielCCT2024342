@@ -70,6 +70,10 @@ app.post("/form", (req, res) => {
     
 })
 
-app.listen(port, () => {
+app
+    .listen(port, () => {
     console.log(`Server running on http://localhost:${port}`)
 })
+    .on("error", (err) => {
+        console.log("Server error: " + err)
+    })
